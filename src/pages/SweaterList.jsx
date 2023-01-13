@@ -10,11 +10,14 @@ import "../estilos/productosList.css";
 import "../estilos/buscador.css";
 
 const SweaterList = () => {
-const [productos, setProductos] = useState([]);
+  const [productos, setProductos] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://veshbymicaelalozano.onrender.com/api/productos")
+      .get("https://veshbymicaelalozano.onrender.com/api/productos", {
+        withCredentials: true,
+        credentials: "include",
+      })
       .then((res) => res.data)
       .then((productos) => {
         setProductos(productos);
